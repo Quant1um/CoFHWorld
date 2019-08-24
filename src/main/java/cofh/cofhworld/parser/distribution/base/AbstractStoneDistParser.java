@@ -13,5 +13,4 @@ public abstract class AbstractStoneDistParser extends AbstractDistParser {
 
 		return Arrays.asList(new WeightedBlock(Blocks.STONE, -1));
 	}
-
 }

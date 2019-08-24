@@ -32,5 +32,4 @@ public class DistParserGaussian extends AbstractStoneDistParser {
 
 		return new DistributionGaussian(featureName, gen, numClusters, rolls, centerHeight, spread, retrogen);
 	}
-
 }

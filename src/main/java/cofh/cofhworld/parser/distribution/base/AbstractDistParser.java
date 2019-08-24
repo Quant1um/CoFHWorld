@@ -1,6 +1,9 @@
 package cofh.cofhworld.parser.distribution.base;
 
+import cofh.cofhworld.data.numbers.ExponentProvider;
 import cofh.cofhworld.data.numbers.INumberProvider;
+import cofh.cofhworld.data.numbers.world.WorldValueEnum;
+import cofh.cofhworld.data.numbers.world.WorldValueProvider;
 import cofh.cofhworld.parser.GeneratorData;
 import cofh.cofhworld.parser.IDistributionParser;
 import cofh.cofhworld.parser.IGeneratorParser.InvalidGeneratorException;
@@ -38,6 +41,10 @@ public abstract class AbstractDistParser implements IDistributionParser {
 	public final Distribution getFeature(String featureName, Config genObject, boolean retrogen, Logger log) throws InvalidDistributionException {
 
 		INumberProvider numClusters = NumberData.parseNumberValue(genObject.getValue("cluster-count"), 0, Long.MAX_VALUE);
+
+		if(genObject.hasPath("cluster-half-distance")) {
+			numClusters = new ExponentProvider(new WorldValueProvider("SPAWN_DIST"), NumberData.parseNumberValue(genObject.getValue("cluster-half-distance"), 0, Long.MAX_VALUE), numClusters);
+		}
 
 		WorldGenerator generator;
 		try {

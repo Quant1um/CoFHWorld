@@ -80,6 +80,12 @@ public enum WorldValueEnum {
 
 			return world.getSpawnPoint().getZ();
 		}
+	}, SPAWN_DIST {
+		@Override
+		public long getValue(World world, Random rand, INumberProvider.DataHolder data) {
+
+			return (long)Math.sqrt(world.getSpawnPoint().distanceSq(data.getPos("position")));
+		}
 	}, CURRENT_X {
 		@Override
 		public long getValue(World world, Random rand, INumberProvider.DataHolder data) {

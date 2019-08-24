@@ -186,3 +186,5 @@ nbproject
 .idea/
 *.iml
 *.eml
+/CoFHWorld.ipr
+/CoFHWorld.iws
